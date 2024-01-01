@@ -14,7 +14,7 @@ extension MKTileOverlayPath {
     
     /// Creates a `MkTileOverlayPath` from a MapCache `TileCoords`
     /// - Parameter tileCoords: coordinates of the tile
-    init(tileCoords: TileCoords) {
+    public init(tileCoords: TileCoords) {
         self.init()
         x = Int(tileCoords.tileX)
         y = Int(tileCoords.tileY)

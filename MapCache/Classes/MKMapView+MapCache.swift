@@ -54,8 +54,8 @@ extension MKMapView {
     ///
     /// - SeeAlso: Example project and Readme documentation
     public func mapCacheRenderer(forOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        if overlay.isKind(of: MKTileOverlay.self) {
-            return CachedTileOverlayRenderer(overlay: overlay)
+        if let overlay = overlay as? MKTileOverlay {
+            return CachedTileOverlayRenderer(tileOverlay: overlay)
         }
         return MKOverlayRenderer()
     }

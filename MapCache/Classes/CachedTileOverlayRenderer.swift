@@ -21,7 +21,7 @@ open class CachedTileOverlayRenderer: MKTileOverlayRenderer {
     
     /// Indicates if the renderer is ready to draw. It´s always true
     /// - SeeAlso: [MKOverlayRenderer](https://developer.apple.com/documentation/mapkit/mkoverlayrenderer)
-    public override func canDraw(_ mapRect: MKMapRect, zoomScale: MKZoomScale) -> Bool {
+    open override func canDraw(_ mapRect: MKMapRect, zoomScale: MKZoomScale) -> Bool {
         // very important to call super.canDraw first, some sort of side effect happening which allows this to work (???).
         let _ = super.canDraw(mapRect, zoomScale: zoomScale)
         return true
@@ -31,7 +31,7 @@ open class CachedTileOverlayRenderer: MKTileOverlayRenderer {
     /// - Parameters:
     ///     - mapRect: the map rect where the tiles need to be drawn
     ///     - zoomScale: current zoom in the map
-    public override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
+    open override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
         
         // use default rendering if the type of overlay is not CachedTileOverlay
         guard let cachedOverlay = overlay as? CachedTileOverlay else {

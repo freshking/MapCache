@@ -18,7 +18,7 @@ import MapKit
 open class CachedTileOverlay : MKTileOverlay {
     
     /// A class that implements the `MapCacheProtocol`
-    let mapCache : MapCacheProtocol
+    public let mapCache : MapCacheProtocol
     
     /// If true `loadTile` uses the implementation of  the `mapCache` var. If `false`, uses the
     /// default `MKTileOverlay`implementation from Apple.
@@ -60,7 +60,7 @@ open class CachedTileOverlay : MKTileOverlay {
     /// Tells whether or not to upsample and show a lesser detailed z level
     /// takes into account `useZoom` configuration as well as current and `maximumZ` values
     /// - Parameter at current zoom.
-    func shouldZoom(at scale: MKZoomScale) -> Bool {
+    public func shouldZoom(at scale: MKZoomScale) -> Bool {
         guard mapCache.config.overZoomMaximumZ else { return false }
         return scale.toZoomLevel(tileSize: mapCache.config.tileSize) > mapCache.config.maximumZ
     }
@@ -71,7 +71,7 @@ open class CachedTileOverlay : MKTileOverlay {
     /// - Parameter rect: map rectangle for which we want to get the tile set
     /// - Parameter scale: current zoom scale
     ///
-    func tilesInMapRect(rect: MKMapRect, scale: MKZoomScale) -> [ZoomableTile] {
+    public func tilesInMapRect(rect: MKMapRect, scale: MKZoomScale) -> [ZoomableTile] {
         var tiles: [ZoomableTile] = []
         let tileSize = mapCache.config.tileSize
         var z = scale.toZoomLevel(tileSize: tileSize)
